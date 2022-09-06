@@ -1,0 +1,152 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+@*<style>
+    body{
+        background-image:url('images.jpg');
+    }
+</style>
+<body>
+    <section class="vh-100" >
+        <div class="container py-5 h-100">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col col-xl-10">
+                    <div class="card" style="border-radius: 1rem;">
+                        <div class="row g-0">
+                            <div class="col-md-6 col-lg-5 d-none d-md-block">
+                                <img src="~/content6505.jpg"
+                                     style="width:120%; height:100%;" />
+                            </div>
+                            <div class="col-md-6 col-lg-7 d-flex align-items-center">
+                                <div class="card-body p-4 p-lg-5 text-black">
+
+                                    <form action="/Home/Prijava" method="post">
+                                        <div class="d-flex align-items-center mb-3 pb-1">
+                                            <i class="fas fa-cubes fa-2x me-3" style="color: #ff6219;"></i>
+                                            <span class="h1 fw-bold mb-0">Prijavite se</span>
+                                        </div>
+
+                                        <h5 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;"></h5>
+
+                                        <div class="form-outline mb-4">
+                                            <input type="email" id="email" name="" class="form-control form-control-lg" />
+                                            <label class="form-label" for="email">Email adresa</label>
+                                        </div>
+
+                                        <div class="form-outline mb-4">
+                                            <input type="password" id="lozinka" name="lozinka" class="form-control form-control-lg" />
+                                            <label class="form-label" for="lozinka">Lozinka</label>
+                                        </div>
+
+                                        <div class="pt-1 mb-4">
+                                            <button class="btn btn-dark btn-lg btn-block" type="submit">Posalji</button>
+                                        </div>
+                                        <center>
+                                            <div>
+                                                <a asp-area="" asp-controller="Account" asp-action="GoogleLogin">
+                                                    <img src="~/google.png" height="40px" width="40px" />
+                                                </a>
+                                            </div>
+
+                                            <p class="mb-5 pb-lg-2" style="color: #393f81;">
+                                                Nemate nalog? <a href="/Home/NaRegistrovanje"
+                                                                 style="color: #393f81;">Registrujte se!</a>
+                                            </p>
+                                        </center>
+                                    </form>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>*@
+<head>
+    <style>
+        .mojdiv {
+            width: initial;
+            height: initial;
+            background-color: white;
+            display: inline-block;
+            position: relative;
+            border:5px solid gold;
+        }
+        body{
+            font-family:sans-serif;
+            background-color:gray;
+            background-image:url('logo.png');
+        }
+        p {
+            /*position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);*/
+        }
+
+        a {
+            color: black;
+        }
+    </style>
+</head>
+<body>
+    <center>   
+        
+        <div class="mojdiv">
+            <h2>Prijavi se</h2>
+            <p style="color:red;">@ViewBag.Error</p>
+            <form action="/Home/Prijava" accept-charset="UTF-8" method="post">
+                <table class="table-borderless">
+                    <thead>
+                        <tr>
+                            <td>
+                                <label>Email</label>
+                            <br />
+                                <input type="text" name="email" required/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label>Lozinka</label>
+                            <br />
+                                <input type="password" name="lozinka" required/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td align="center" colspan="2">
+                                <input type="submit" value="Posalji" />
+                            </td>
+                        </tr>
+                    </thead>
+                </table>
+            </form>
+
+            <a asp-area="" asp-controller="Account" asp-action="GoogleLogin">
+                <img src="~/google.png" height="40px" width="40px" />
+            </a>
+            <br />
+            Nemate nalog?
+            <a href="/Home/NaRegistrovanje">Registrujte se.</a>
+
+
+            @if (Context.User.Identity.IsAuthenticated)
+            {
+                <br />
+                <a asp-controller="Potrosac" asp-action="Dashboard">Hello @User.Identity.Name</a>
+                <br />
+                <a asp-controller="Account" asp-action="Logout">Logout</a>
+
+            }
+
+        </div>
+    </center>
+
+</body>

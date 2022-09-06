@@ -1,0 +1,108 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@using WebApplication.Data 
+<head>
+    <style>
+        .mojdiv {
+            width: initial;
+            height: initial;
+            background-color: lightpink;
+            display: inline-block;
+            position: relative;
+            border: 5px solid gold;
+        }
+
+        body {
+            background-color: gray;
+        }
+
+        p {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        a {
+            color: black;
+        }
+    </style>
+</head>
+<body>
+    <center>
+        <div class="mojdiv">
+            <table border="1">
+                <thead>
+                    <tr>
+                        <th>Korisnicko ime</th>
+                        <th>Email</th>
+                        <th>Ime i prezime</th>
+                        <th>Datum rodjenja</th>
+                        <th>Adresa</th>
+                        <th>Status</th>
+                    </tr>
+                    @foreach (Korisnik item in Model)
+                    {
+                        @if (item.Verifikovan == StatusVerifikacije.PROCESIRA)
+                        {
+                            <tr>
+                                <td>@item.KorisnickoIme</td>
+                                <td>@item.Email</td>
+                                <td>@item.ImePrezime</td>
+                                <td>@item.DatumRodjenja</td>
+                                <td>@item.Adresa</td>
+                                <td>@item.Verifikovan</td>
+
+                                <td>
+                                    <form action="OdobriDostavljaca">
+                                        <input type="text" name="email" value="@item.Email" hidden />
+                                        <input type="submit" value="Odobri" />
+                                    </form>
+                                </td>
+                                <td>
+                                    <form action="OdbijDostavljaca">
+                                        <input type="text" name="email" value="@item.Email" hidden />
+                                        <input type="submit" value="Odbij" />
+                                    </form>
+                                </td>
+                            </tr>
+                        }
+                    }
+                </thead>
+            </table>
+            <br /><br /><br /><br /><br />
+            <table border="1">
+                <thead>
+                    <tr>
+                        <th>Korisnicko ime</th>
+                        <th>Email</th>
+                        <th>Ime i prezime</th>
+                        <th>Datum rodjenja</th>
+                        <th>Adresa</th>
+                        <th>Status</th>
+                    </tr>
+                    @foreach (Korisnik item in Model)
+                    {
+                        @if (item.Verifikovan != StatusVerifikacije.PROCESIRA)
+                        {
+                            <tr>
+                                <td>@item.KorisnickoIme</td>
+                                <td>@item.Email</td>
+                                <td>@item.ImePrezime</td>
+                                <td>@item.DatumRodjenja</td>
+                                <td>@item.Adresa</td>
+                                <td>@item.Verifikovan</td>
+
+
+                            </tr>
+                        }
+                    }
+                </thead>
+            </table>
+            <a href="~/Admin/Dashboard">Nazad</a>
+        </div>
+    </center>
+</body>

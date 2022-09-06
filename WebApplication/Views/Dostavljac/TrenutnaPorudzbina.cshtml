@@ -1,0 +1,86 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<head>
+    <style>
+        
+
+        .mojp {
+            text-align: center;
+            font-size: 60px;
+            margin-top: 0px;
+            color: black;
+        }
+
+        .mojdiv {
+            width: initial;
+            height: initial;
+            background-color: lightpink;
+            display: inline-block;
+            position: relative;
+            border: 5px solid gold;
+        }
+
+        body {
+            background-color: gray;
+        }
+    </style>
+</head>
+<body>
+    <center>
+        <div class="mojdiv">
+            <table border="1">
+                <tr>
+                    <th>Proizvodi</th>
+                    <td>
+                        @foreach (var item in Model.Proizvod)
+                        {
+                            <p>@item.Proizvod.Ime x @item.Kolicina</p>
+                        }
+                    </td>
+                </tr>
+                <tr>
+                    <th>Adresa</th>
+                    <td>@Model.Adresa</td>
+                </tr>
+                <tr>
+                    <th>Komnetar</th>
+                    <td>@Model.Komentar</td>
+                </tr>
+                <tr>
+                    <th>Cena</th>
+                    <td>@Model.Cena</td>
+                </tr>
+            </table>
+        </div>
+
+        <h3>Dostava stize za:</h3>
+        <p class="mojp" id="demo"></p>
+
+        <script>
+
+        let time = @ViewBag.Minuti.Minutes *60 + @ViewBag.Minuti.Seconds %60;
+
+        const countdownEl = document.getElementById('demo');
+
+        setInterval(updateCountdown, 1000);
+
+        function updateCountdown() {
+            const minutes = Math.floor(time / 60);
+            let seconds = time % 60;
+
+            seconds = seconds < 10 ? '0' + seconds : seconds;
+
+            countdownEl.innerHTML = minutes + ":" + seconds;
+            time--;
+
+            if (minutes == 0 && seconds == 0) {
+                window.location.href = "/Dostavljac/Isporuceno";
+            }
+        }
+        </script>
+        <a href="~/Dostavljac/Dashboard">Nazad</a>
+    </center>
+</body>

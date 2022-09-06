@@ -1,0 +1,58 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<head>
+    <style>
+        .mojdiv {
+            width: 30%;
+            height: 100px;
+            background-color: lightpink;
+            display: inline-block;
+            position: relative;
+            border:5px solid gold;
+        }
+        body{
+            background-color:gray;
+        }
+        p {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        a {
+            color: black;
+        }
+    </style>
+</head>
+
+<body>
+    <center>
+        <a href="~/Admin/Profil">
+            <div class="mojdiv">
+                <p>Profil</p>
+            </div>
+        </a>
+        <br />
+        <a href="~/Admin/Verifikacija">
+            <div class="mojdiv">
+                <p>Verifikacija</p>
+            </div>
+        </a>
+        <br />
+        <a href="~/Admin/SvePorudzbine">
+            <div class="mojdiv">
+                <p>Sve porudzbine</p>
+            </div>
+        </a>
+        <br />
+        <a href="~/Admin/DodavanjeProizvoda">
+            <div class="mojdiv">
+                <p>Dodavanje proizvoda</p>
+            </div>
+        </a>
+    </center>
+</body>

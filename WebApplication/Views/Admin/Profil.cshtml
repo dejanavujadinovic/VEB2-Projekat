@@ -1,0 +1,103 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@using WebApplication.Data;
+
+<head>
+    <style>
+        .mojdiv {
+            width: 30%;
+            height: initial;
+            background-color: lightpink;
+            display: inline-block;
+            position: relative;
+            border: 5px solid gold;
+        }
+
+        body {
+            background-color: gray;
+        }
+
+        p {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        a {
+            color: black;
+        }
+    </style>
+</head>
+<body>
+    <center>
+        <div class="mojdiv">
+            <h2>Izmeni profil</h2>
+            <form action="/Admin/UredjenProfil" accept-charset="UTF-8" method="post">
+                <table>
+                    <thead>
+                        <tr>
+
+                            <td>
+                                <img name="Slika" src="~/slike/@Model.Slika" width="100" height="100" class="rounded-circle" asp-append-version="true" EncType="multipart/form-data" />
+                            <br />
+                                <input name="Slika" type="file" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Korisnicko ime<br />
+                                <input type="text" name="korisnickoIme" value="@Model.KorisnickoIme" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Email<br />
+                                <input type="text" name="email" value="@Model.Email" readonly />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Lozinka<br />
+                                <input type="password" name="lozinka" value="@Model.Lozinka" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Ime i prezime<br />
+                                <input type="text" name="imePrezime" value="@Model.ImePrezime" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Datum rodjenja
+                                <br />
+                                <input type="date" name="datumRodjenja" value="@Convert.ToDateTime(Model.DatumRodjenja).ToString("yyyy-MM-dd")" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Adresa<br />
+                                <input type="text" name="adresa" value="@Model.Adresa" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Tip korisnika<br />
+                                <select name="tip">
+                                    <option>Administrator</option>
+                                    <option>Dostavljac</option>
+                                    <option>Korisnik</option>
+                                </select>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <input type="submit" placeholder="Photo" value="Posalji" />
+                            </td>
+                        </tr>
+                    </thead>
+                </table>
+            </form>
+            <a href="~/Admin/Dashboard">Nazad</a>
+        </div>
+    </center>
+</body>

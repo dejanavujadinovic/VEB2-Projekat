@@ -1,0 +1,69 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<head>
+    <style>
+        .mojdiv {
+            width: 30%;
+            height: initial;
+            background-color: lightpink;
+            display: inline-block;
+            position: relative;
+            border: 5px solid gold;
+        }
+
+        body {
+            background-color: gray;
+        }
+
+        p {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        a {
+            color: black;
+        }
+    </style>
+</head>
+<body>
+    <center>
+        <div class="mojdiv">
+            <h2>Dodaj proizvod</h2>
+            <form action="/Admin/DodajProizvod" method="post">
+                <table>
+                    <thead>
+                        <tr>
+                            <td>Ime</td>
+                            <td>
+                                <input name="ime" type="text" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Cena</td>
+                            <td>
+                                <input name="cena" type="number" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Sastojci</td>
+                            <td>
+                                <input name="sastojci" type="text" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" align="right">
+                                <input value="Dodaj" type="submit" />
+                            </td>
+                        </tr>
+                    </thead>
+                </table>
+            </form>
+            <a href="~/Admin/Dashboard">Nazad</a>
+        </div>
+    </center>
+</body>

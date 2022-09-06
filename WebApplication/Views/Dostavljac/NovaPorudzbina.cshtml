@@ -1,0 +1,69 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+<head>
+    <style>
+        .mojdiv {
+            width: initial;
+            height: initial;
+            background-color: lightpink;
+            display: inline-block;
+            position: relative;
+            border: 5px solid gold;
+        }
+
+        body {
+            background-color: gray;
+        }
+
+        p {
+            /*position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);*/
+        }
+
+        a {
+            color: black;
+        }
+    </style>
+</head>
+<body>
+    <center>
+        <div class="mojdiv">
+            <p style="color:red;">@ViewBag.Error</p>
+            <table border="1">
+                <tr>
+                    <th>Proizvodi</th>
+                    <th>Adresa</th>
+                    <th>Komentar</th>
+                    <th>Ukupno</th>
+                </tr>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @foreach (var item1 in item.Proizvod)
+                            {
+                                <p>@item1.Proizvod.Ime x @item1.Kolicina</p>
+                            }
+                        </td>
+                        <td>@item.Adresa</td>
+                        <td>@item.Komentar</td>
+                        <td>@item.Cena</td>
+                        <td>
+                            <form action="~/Dostavljac/PrihvatiNarudzbinu">
+                                <input type="number" name="id" value="@item.Id" hidden />
+                                <input type="submit" value="Prihvati" />
+                            </form>
+                        </td>
+                    </tr>
+                }
+            </table>
+            <a href="~/Dostavljac/Dashboard">Nazad</a>
+        </div>
+    </center>
+</body>

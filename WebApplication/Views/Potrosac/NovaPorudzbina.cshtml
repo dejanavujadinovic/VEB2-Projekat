@@ -1,0 +1,69 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<head>
+    <style>
+        .mojdiv {
+            width: initial;
+            height: initial;
+            background-color: lightpink;
+            display: inline-block;
+            position: relative;
+            border: 5px solid gold;
+        }
+
+        body {
+            background-color: gray;
+        }
+
+        /*p {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }*/
+
+        a {
+            color: black;
+        }
+    </style>
+</head>
+<body>
+    <center>
+        <div class="mojdiv">
+            <p style="color:red;">@ViewBag.Error</p>
+            <table border="1">
+                <tr>
+                    <th align="center">Naziv</th>
+                    <th align="center">Cena</th>
+                    <th align="center" style="align-content:center;">Sastojci</th>
+                </tr>
+
+                @foreach (Proizvod item in Model)
+                {
+                    <tr>
+                        <td>@item.Ime</td>
+                        <td>@item.Cena</td>
+                        <td>@item.Sastojci</td>
+                        <td align="center">
+                            <form action="/Potrosac/DodajProizvod">
+                                <input type="number" name="id" value="@item.Id" hidden />
+                                <input type="submit" value="Dodaj" />
+                            </form>
+                        </td>
+                    </tr>
+                }
+                <tr>
+                    <td colspan="4" align="right">
+                        <form action="/Potrosac/MojaKorpa">
+                            <input type="submit" value="Moja korpa" />
+                        </form>
+                    </td>
+                </tr>
+            </table>
+            <a href="~/Potrosac/Dashboard">Nazad</a>
+        </div>
+    </center>
+</body>
